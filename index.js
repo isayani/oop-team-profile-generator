@@ -146,6 +146,7 @@ const int = function internPrompt() {
     .then ((input) => {
         allResponses.intern.push({...input});
         console.log("Intern added to roster!");
+        const htmlContent = generateHTML(allResponses);
 
         if (mgr.input.choices === "Engineer") {
             engineerPrompt();
@@ -154,17 +155,11 @@ const int = function internPrompt() {
         } else {
             generateHTML(allResponses);
         }
-    })
 
-    .catch((err) => {
-        if (err) {
-          console.log(err);
-        } else {
-          console.log(
-            "Rendering your Team Profile!",
-          );
-        }
-      });
+        fs.writeFile('index.html', htmlContent, (err) =>
+            err ? console.log(err) : console.log('Successfully generated Team Profile!')
+        );
+    })
 };
 
 managerPrompt();
