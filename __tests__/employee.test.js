@@ -1,3 +1,4 @@
+// Test for Employee class
 const Employee = require('../lib/employee');
 
 test('testing datatype of employee', () => {

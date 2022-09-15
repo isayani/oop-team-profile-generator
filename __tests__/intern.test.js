@@ -1,3 +1,4 @@
+// Test for Intern class
 const Intern = require('../lib/Intern');
 
 test('testing datatype of Intern', () => {

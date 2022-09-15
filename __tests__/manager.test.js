@@ -1,3 +1,4 @@
+// Test for Manager class
 const Manager = require('../lib/Manager');'jayaHub'
 
 test('testing datatype of Manager', () => {
