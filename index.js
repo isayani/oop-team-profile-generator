@@ -1,16 +1,16 @@
+// Requires files needed for js to run
 const inquirer = require('inquirer');
 const fs = require('fs');
-
 const generateHTML = require('./src/generateHTML');
+const Engineer = require('./lib/engineer');
+const Manager = require('./lib/manager');
+const Intern = require('./lib/intern');
 
-let allResponses = {
-    manager: [],
-    employee: [],
-    engineer: [],
-    intern: [],
-};
-    
-const mgr = function managerPrompt() {
+// Empty array for employees to populate to
+let employees = [];
+   
+// Inquirer prompt for manager
+function managerPrompt() {
     inquirer
     .prompt([
         {
@@ -32,27 +32,33 @@ const mgr = function managerPrompt() {
             name: 'officeNbr',
         },
         
+        // Option to add more employees
         {
-            type: 'checkbox',
+            type: 'list',
             message: 'Would you like to add anymore employees?',
             choices: ["Engineer", new inquirer.Separator(), "Intern", new inquirer.Separator(), "No, I am finished building my team."],
             name: 'option',
         },
     ])
 
-    // add in conditional for engineer, intern or none
+    // Creates new constructed Manager with input responses
     .then ((input) => {
-        allResponses.manager.push({...input});
+        let manager = new Manager(input.mgrName, input.mgrId,input.mgrEmail, input.officeNbr)
+        
+        // Pushes new var manager to employees array
+        employees.push(manager);
 
-        if (mgr.input.choices === "Engineer") {
+        // Returns response based on user input
+        if (input.option === "Engineer") {
             engineerPrompt();
-        } else if (mgr.input.choice === "Intern") {
+        } else if (input.option === "Intern") {
             internPrompt();
         } else {
-            generateHTML(allResponses);
+           generateHTMLfile()
         }
     })
 
+    // Catch error if there is one else success
     .catch((err) => {
         if (err) {
           console.log(err);
@@ -64,7 +70,7 @@ const mgr = function managerPrompt() {
     });
 };
 
-const eng = function engineerPrompt() {
+function engineerPrompt() {
     inquirer
     .prompt([
         {
@@ -86,20 +92,24 @@ const eng = function engineerPrompt() {
         },
         
         {
-            type: 'checkbox',
+            type: 'list',
             message: 'Would you like to add anymore employees?',
-            choices: ["Intern", new inquirer.Separator(), "No, I am finished building my team."],
+            choices: ["Engineer", new inquirer.Separator(), "Intern", new inquirer.Separator(), "No, I am finished building my team."],
             name: 'option',
         },
     ])
-    // add in conditional for engineer, intern or none
+    
     .then ((input) => {
-        allResponses.engineer.push({...input});
+        let engineer = new Engineer(input.engName, input.engId,input.engEmail, input.gitHub)
+        
+        employees.push(engineer);
 
-        if (eng.input.choices === "Intern") {
+        if (input.option === "Engineer") {
+            engineerPrompt();
+        } else if (input.option === "Intern") {
             internPrompt();
         } else {
-            generateHTML(allResponses)
+           generateHTMLfile()
         }
     })
 
@@ -114,7 +124,7 @@ const eng = function engineerPrompt() {
       });
 };
 
-const int = function internPrompt() {
+function internPrompt() {
     inquirer
     .prompt([
         {
@@ -135,7 +145,7 @@ const int = function internPrompt() {
             name: 'school',
         },
         {
-            type: 'checkbox',
+            type: 'list',
             message: 'Would you like to add anymore employees?',
             choices: ["Engineer", new inquirer.Separator(), "Intern", new inquirer.Separator(), "No, I am finished building my team."],
             name: 'option',
@@ -144,22 +154,37 @@ const int = function internPrompt() {
     ])
     
     .then ((input) => {
-        allResponses.intern.push({...input});
-        console.log("Intern added to roster!");
-        const htmlContent = generateHTML(allResponses);
+        let intern = new Intern (input.intName, input.intId,input.intEmail, input.school)
+        
+        employees.push(intern);
 
-        if (mgr.input.choices === "Engineer") {
+        if (input.option === "Engineer") {
             engineerPrompt();
-        } else if (mgr.input.choice === "Intern") {
+        } else if (input.option === "Intern") {
             internPrompt();
         } else {
-            generateHTML(allResponses);
+           generateHTMLfile();
         }
 
-        fs.writeFile('index.html', htmlContent, (err) =>
-            err ? console.log(err) : console.log('Successfully generated Team Profile!')
-        );
     })
+
+    .catch((err) => {
+        if (err) {
+          console.log(err);
+        } else {
+            console.log("Intern added to roster!"
+          );
+        }
+      })
 };
 
+// Function to generate HTML file
+function generateHTMLfile() {
+    let htmlContent = generateHTML(employees);
+    fs.writeFile('index.html', htmlContent, (err) =>
+            err ? console.log(err) : console.log('Successfully generated Team Profile!')
+        );
+}
+
+// Starts Inquirer prompts
 managerPrompt();
