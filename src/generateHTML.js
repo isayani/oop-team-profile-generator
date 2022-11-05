@@ -19,7 +19,7 @@ const generateCards = (team) => {
       html += `
       <div class="container card border-secondary bg-light my-5 ">
       ${team[i].getName()} <br/>
-      <strong>Engineer</strong> <br/>
+      <strong>Engineer</strong>
       <br/>
       ID: ${team[i].getId()} <br/>
       <span>Email: <a href="mailto:${team[i].getEmail()}">${team[i].getEmail()}</a></span>
@@ -30,7 +30,7 @@ const generateCards = (team) => {
       html += `
       <div class="container card border-secondary bg-light my-5 ">
       ${team[i].getName()} <br/>
-      <strong>Intern</strong> <br/>
+      <strong>Intern</strong>
       <br/>
       ID: ${team[i].getId()} <br/>
       <span>Email: <a href="mailto:${team[i].getEmail()}">${team[i].getEmail()}</a></span>
