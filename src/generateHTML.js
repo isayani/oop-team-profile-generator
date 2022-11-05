@@ -11,7 +11,7 @@ const generateCards = (team) => {
       Manager <br/>
       <br/>
       ID: ${team[i].getId()} <br/>
-      Email: ${team[i].getEmail()} <br/>
+      <span>Email: <a href="mailto:${team[i].getEmail()}">${team[i].getEmail()}</a></span>
       Office Number: ${team[i].getOfficeNumber()}
       </div>
       `
@@ -22,8 +22,8 @@ const generateCards = (team) => {
       Engineer <br/>
       <br/>
       ID: ${team[i].getId()} <br/>
-      Email: ${team[i].getEmail()} <br/>
-      GitHub: https://github.com/${team[i].getGithub()}
+      <span>Email: <a href="mailto:${team[i].getEmail()}">${team[i].getEmail()}</a></span>
+      <span>GitHub: <a href="https://github.com/${team[i].getGithub()}">${team[i].getGithub()}</a></span>
       </div>
       `
     } else {
@@ -33,7 +33,7 @@ const generateCards = (team) => {
       Intern <br/>
       <br/>
       ID: ${team[i].getId()} <br/>
-      Email: ${team[i].getEmail()} <br/>
+      <span>Email: <a href="mailto:${team[i].getEmail()}">${team[i].getEmail()}</a></span>
       School: ${team[i].getSchool()}
       </div>
       `
