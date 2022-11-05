@@ -1,12 +1,12 @@
-// DRY variables
-const getRole = team[i].getRole();
-const getName = team[i].getName();
-const getId = team[i].getId();
-const getEmail = team[i].getEmail();
-const getUser = team[i].getGithub();
-
 // Function to auto generate cards per employee
 const generateCards = (team) => {
+  // DRY variables
+  const getRole = team[i].getRole();
+  const getName = team[i].getName();
+  const getId = team[i].getId();
+  const getEmail = team[i].getEmail();
+  const getUser = team[i].getGithub();
+  
   let html = ''
 
   for (let i = 0; i < team.length; i++) {
