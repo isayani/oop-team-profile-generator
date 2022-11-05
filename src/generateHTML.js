@@ -15,7 +15,7 @@ const generateCards = (team) => {
       html += `
       <div class="container card border-secondary bg-light my-5 ">
       ${getName} <br/>
-      Manager <br/>
+      <strong>Manager</strong>
       <br/>
       ID: ${getId} <br/>
       <span>Email: <a href="mailto:${getEmail}">${getEmail}</a></span>
@@ -26,7 +26,7 @@ const generateCards = (team) => {
       html += `
       <div class="container card border-secondary bg-light my-5 ">
       ${getName} <br/>
-      Engineer <br/>
+      <strong>Engineer</strong> <br/>
       <br/>
       ID: ${getId} <br/>
       <span>Email: <a href="mailto:${getEmail}">${getEmail}</a></span>
@@ -37,7 +37,7 @@ const generateCards = (team) => {
       html += `
       <div class="container card border-secondary bg-light my-5 ">
       ${getName} <br/>
-      Intern <br/>
+      <strong>Intern</strong> <br/>
       <br/>
       ID: ${getId} <br/>
       <span>Email: <a href="mailto:${getEmail}">${getEmail}</a></span>
