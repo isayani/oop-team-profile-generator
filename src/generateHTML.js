@@ -1,51 +1,43 @@
 // Function to auto generate cards per employee
 const generateCards = (team) => {
-  // DRY variables
-  const getRole = team[i].getRole();
-  const getName = team[i].getName();
-  const getId = team[i].getId();
-  const getEmail = team[i].getEmail();
-  const getUser = team[i].getGithub();
-  
   let html = ''
 
   for (let i = 0; i < team.length; i++) {
-
-    if (getRole == 'Manager') {
+    
+    if (team[i].getRole() == 'Manager') {
       html += `
       <div class="container card border-secondary bg-light my-5 ">
-      ${getName} <br/>
+      ${team[i].getName()} <br/>
       <strong>Manager</strong>
       <br/>
-      ID: ${getId} <br/>
-      <span>Email: <a href="mailto:${getEmail}">${getEmail}</a></span>
+      ID: ${team[i].getId()} <br/>
+      <span>Email: <a href="mailto:${team[i].getEmail()}">${team[i].getEmail()}</a></span>
       Office Number: ${team[i].getOfficeNumber()}
       </div>
       `
-    } else if (getRole == 'Engineer') {
+    } else if (team[i].getRole() == 'Engineer') {
       html += `
       <div class="container card border-secondary bg-light my-5 ">
-      ${getName} <br/>
+      ${team[i].getName()} <br/>
       <strong>Engineer</strong> <br/>
       <br/>
-      ID: ${getId} <br/>
-      <span>Email: <a href="mailto:${getEmail}">${getEmail}</a></span>
-      <span>GitHub: <a href="https://github.com/${getUser}">${getUser}</a></span>
+      ID: ${team[i].getId()} <br/>
+      <span>Email: <a href="mailto:${team[i].getEmail()}">${team[i].getEmail()}</a></span>
+      <span>GitHub: <a href="https://github.com/${team[i].getGithub()}">${team[i].getGithub()}</a></span>
       </div>
       `
     } else {
       html += `
       <div class="container card border-secondary bg-light my-5 ">
-      ${getName} <br/>
+      ${team[i].getName()} <br/>
       <strong>Intern</strong> <br/>
       <br/>
-      ID: ${getId} <br/>
-      <span>Email: <a href="mailto:${getEmail}">${getEmail}</a></span>
+      ID: ${team[i].getId()} <br/>
+      <span>Email: <a href="mailto:${team[i].getEmail()}">${team[i].getEmail()}</a></span>
       School: ${team[i].getSchool()}
       </div>
       `
     }
-    
   }
   return html;
 }
