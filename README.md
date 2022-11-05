@@ -51,13 +51,13 @@ THEN I exit the application, and the HTML is generated
 ## Installation
 Download this repository to User's local machine. User should have [Node.js](https://nodejs.org/en/download/) installed and run the terminal command ``node index.js`` when in the appropriate directory. This will start a series of prompts for User to answer. Digi-Dex will populate an index.html file in User's root directory!
 
-The following shows application's appearance and functionality as well as all tests being passed:
+The following shows all tests being passed, how to invoke the application, rendered index.html file and page:
 
 https://user-images.githubusercontent.com/107900180/198930658-f830bfc3-3061-4f5e-a783-69ee2bb41c02.mp4
 
-https://user-images.githubusercontent.com/107900180/198929468-de2e39b4-887e-4ce4-b708-16ad922b22d6.mp4
+https://user-images.githubusercontent.com/107900180/200104572-6423fb76-6b28-4eb7-92fa-942be05ff342.mp4
 
-![teamRosterRender](https://user-images.githubusercontent.com/107900180/198932118-3d0f02dc-0a0c-474b-8c4b-d5ac22f8fd26.gif)
+![teamRosterRender](https://user-images.githubusercontent.com/107900180/200104600-8ee38ef0-8096-4db8-86b1-073ad95bc995.gif)
 
 ## License
 This project is licensed under the MIT license.
@@ -73,7 +73,7 @@ A short and simple permissive license with conditions only requiring preservatio
 - Inquirer.js
 
 ## Future Development
-We would like to continue styling the front-end of the application for UX and add error catching for duplicate entries.
+We would like to continue styling the front-end of the application for UX, add error catching for duplicate entries, and hold repeat code in variables.
 
 ## Contributing
 Contributions may be made through GitHub, provided communication is made and the initial repository is forked to keep version control.
