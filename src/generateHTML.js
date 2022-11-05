@@ -1,39 +1,46 @@
+// DRY variables
+const getRole = team[i].getRole();
+const getName = team[i].getName();
+const getId = team[i].getId();
+const getEmail = team[i].getEmail();
+const getUser = team[i].getGithub();
+
 // Function to auto generate cards per employee
 const generateCards = (team) => {
   let html = ''
 
   for (let i = 0; i < team.length; i++) {
 
-    if (team[i].getRole() == 'Manager') {
+    if (getRole == 'Manager') {
       html += `
       <div class="container card border-secondary bg-light my-5 ">
-      ${team[i].getName()} <br/>
+      ${getName} <br/>
       Manager <br/>
       <br/>
-      ID: ${team[i].getId()} <br/>
-      <span>Email: <a href="mailto:${team[i].getEmail()}">${team[i].getEmail()}</a></span>
+      ID: ${getId} <br/>
+      <span>Email: <a href="mailto:${getEmail}">${getEmail}</a></span>
       Office Number: ${team[i].getOfficeNumber()}
       </div>
       `
-    } else if (team[i].getRole() == 'Engineer') {
+    } else if (getRole == 'Engineer') {
       html += `
       <div class="container card border-secondary bg-light my-5 ">
-      ${team[i].getName()} <br/>
+      ${getName} <br/>
       Engineer <br/>
       <br/>
-      ID: ${team[i].getId()} <br/>
-      <span>Email: <a href="mailto:${team[i].getEmail()}">${team[i].getEmail()}</a></span>
-      <span>GitHub: <a href="https://github.com/${team[i].getGithub()}">${team[i].getGithub()}</a></span>
+      ID: ${getId} <br/>
+      <span>Email: <a href="mailto:${getEmail}">${getEmail}</a></span>
+      <span>GitHub: <a href="https://github.com/${getUser}">${getUser}</a></span>
       </div>
       `
     } else {
       html += `
       <div class="container card border-secondary bg-light my-5 ">
-      ${team[i].getName()} <br/>
+      ${getName} <br/>
       Intern <br/>
       <br/>
-      ID: ${team[i].getId()} <br/>
-      <span>Email: <a href="mailto:${team[i].getEmail()}">${team[i].getEmail()}</a></span>
+      ID: ${getId} <br/>
+      <span>Email: <a href="mailto:${getEmail}">${getEmail}</a></span>
       School: ${team[i].getSchool()}
       </div>
       `
